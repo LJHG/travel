@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f6cd8d4-f6b0-4c7b-b01c-ed2db5f4ac79" name="Default Changelist" comment="" />
+    <list default="true" id="2f6cd8d4-f6b0-4c7b-b01c-ed2db5f4ac79" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +22,7 @@
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
@@ -123,6 +128,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585728547566">
       <screen x="0" y="0" width="1536" height="824" />
@@ -132,26 +147,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="958" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585746841208" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585750431124">
+    <state x="326" y="4" key="CommitChangelistDialog2" timestamp="1585822947254">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585750431124" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585750431124">
+    <state x="326" y="4" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585822947254" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1585822792049">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585750431124" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585750431123">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1585822792049" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585822712427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585750431123" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585750431124">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585822712427" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585822712427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585750431124" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585822712427" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585822712427">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585822712427" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585822712427">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585822712427" />
+    <state x="477" y="134" key="RollbackChangesDialog" timestamp="1585822537030">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585822537030" />
     <state x="270" y="54" key="SettingsEditor" timestamp="1585630065324">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585630065324" />
+    <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585822533130">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585822533130" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585723691928">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
