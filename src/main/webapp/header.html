@@ -1,7 +1,28 @@
 <script>
     $(function () {
-        $.get("getCurrentUserServlet",{},function (data) {
-            $("#span_username").html("欢迎回来，"+data.name);
+        $.get("user/getCurrentUser",{},function (data) {
+            if(data == null)
+            {
+                $("#span_username").html("请进行登陆");
+            }
+
+            else
+            {
+                $("#span_username").html("欢迎回来，"+data.name);
+            }
+
+        });
+
+        $.get("category/getAllCategories",{},function (data) {
+            console.log(data);
+            var lis = "<li class=\"nav-active\"><a href=\"index.html\">首页</a></li>";
+            for(var i=0;i<data.length;i++)
+            {
+                lis += '<li><a href="route_list.html">'+data[i].cname+'</a></li>';
+                console.log(data.cname);
+            }
+            lis = lis +  '<li><a href="favoriterank.html">收藏排行榜</a></li>';
+            $("#categories").html(lis);
         });
     });
 </script>
@@ -24,7 +45,7 @@
             	
                 <span id="span_username">欢迎回来，admin</span>
                 <a href="myfavorite.html" class="collection">我的收藏</a>
-                <a href="javascript:location.href='exitServlet';">退出</a>
+                <a href="javascript:location.href='user/exit';">退出</a>
             </div>
         </div>
         <div class="header_wrap">
@@ -51,17 +72,17 @@
     <!-- 头部 end -->
      <!-- 首页导航 -->
     <div class="navitem">
-        <ul class="nav">
-            <li class="nav-active"><a href="index.html">首页</a></li>
-            <li><a href="route_list.html">门票</a></li>
-            <li><a href="route_list.html">酒店</a></li>
-            <li><a href="route_list.html">香港车票</a></li>
-            <li><a href="route_list.html">出境游</a></li>
-            <li><a href="route_list.html">国内游</a></li>
-            <li><a href="route_list.html">港澳游</a></li>
-            <li><a href="route_list.html">抱团定制</a></li>
-            <li><a href="route_list.html">全球自由行</a></li>
-            <li><a href="favoriterank.html">收藏排行榜</a></li>
+        <ul class="nav" id="categories">
+<!--            <li class="nav-active"><a href="index.html">首页</a></li>-->
+<!--            <li><a href="route_list.html">门票</a></li>-->
+<!--            <li><a href="route_list.html">酒店</a></li>-->
+<!--            <li><a href="route_list.html">香港车票</a></li>-->
+<!--            <li><a href="route_list.html">出境游</a></li>-->
+<!--            <li><a href="route_list.html">国内游</a></li>-->
+<!--            <li><a href="route_list.html">港澳游</a></li>-->
+<!--            <li><a href="route_list.html">抱团定制</a></li>-->
+<!--            <li><a href="route_list.html">全球自由行</a></li>-->
+<!--            <li><a href="favoriterank.html">收藏排行榜</a></li>-->
         </ul>
     </div>
     

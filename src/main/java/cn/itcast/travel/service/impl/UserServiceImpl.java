@@ -37,7 +37,7 @@ public class UserServiceImpl  implements UserService {
             userDao.SaveUser(user);
 
             //send the email
-            String content = "<a href='http://localhost/travel/activateUserServlet?code="+code+"'>激活邮箱</a>";
+            String content = "<a href='http://localhost/travel/user/activate?code="+code+"'>激活邮箱</a>";
             MailUtils.sendMail("674478778@qq.com",content,"Activate your account!");
             return true;
         }

@@ -118,7 +118,7 @@
 					if(checkUsername() && checkPassword() && checkEmail() && checkName() && checkTelephone()  &&checkBirthday() && checkCheck())
 					{
 						//如果判断通过，使用ajax提交
-						$.post("registerServlet",$(this).serialize(),function (data) {
+						$.post("user/register",$(this).serialize(),function (data) {
 							if(data.flag)
 							{
 								alert("提交成功了");
