@@ -8,6 +8,7 @@ import cn.itcast.travel.domain.Category;
 import cn.itcast.travel.service.CategoryService;
 import cn.itcast.travel.util.JedisUtil;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Tuple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,8 @@ public class CategoryServiceImpl implements CategoryService {
             return categoryDao.findAllCategory();
         }
 
-        Set<String> categorySet = jedis.zrange("category",0,-1);
+        //Set<String> categorySet = jedis.zrange("category",0,-1);
+        Set<Tuple> categorySet = jedis.zrangeWithScores("category",0,-1);//return String and score
         if(categorySet==null || categorySet.size() == 0)
         {
             //Can't find in redis, find it in database and store it in redis
@@ -45,11 +47,11 @@ public class CategoryServiceImpl implements CategoryService {
         {
             //Find it in redis, turn Set to List
             List<Category> categoryList = new ArrayList<Category>();
-            for (String s : categorySet) {
-                Category temp = new Category();
-                temp.setCname(s);
-                //这里没有set id 无所谓吧
-                categoryList.add(temp);
+            for (Tuple tuple : categorySet) {
+                Category category = new Category();
+                category.setCname(tuple.getElement());
+                category.setCid((int) tuple.getScore());
+                categoryList.add(category);
             }
             return categoryList;
         }
