@@ -1,8 +1,12 @@
 package cn.itcast.travel.web.servlet;
 
+import cn.itcast.travel.domain.Favorite;
 import cn.itcast.travel.domain.PageBean;
 import cn.itcast.travel.domain.Route;
+import cn.itcast.travel.domain.User;
+import cn.itcast.travel.service.FavoriteService;
 import cn.itcast.travel.service.RouteService;
+import cn.itcast.travel.service.impl.FavoriteServiceImpl;
 import cn.itcast.travel.service.impl.RouteServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -16,6 +20,7 @@ import java.lang.reflect.MalformedParametersException;
 public class RouteServlet extends BaseServlet {
 
     private RouteService routeService = new RouteServiceImpl();
+    private FavoriteService favoriteService = new FavoriteServiceImpl();
 
     public void queryPage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String currentPageStr = req.getParameter("currentPage");
@@ -57,5 +62,28 @@ public class RouteServlet extends BaseServlet {
         String json = writeInJson(route);
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().write(json);
+    }
+
+    public void isFavorite(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int rid = Integer.parseInt(req.getParameter("rid"));
+        User user  = (User) req.getSession().getAttribute("user");
+        boolean flag = false;
+        if(user != null)
+        {
+            int uid = user.getUid();
+            flag =favoriteService.isFavorite(uid,rid);
+        }
+
+        String json = writeInJson(flag);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().write(json);
+    }
+
+    public void addFavorite(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        int rid = Integer.parseInt(req.getParameter("rid"));
+        User user  = (User) req.getSession().getAttribute("user");
+        int uid = user.getUid();
+        favoriteService.addFavorite(uid,rid);
     }
 }

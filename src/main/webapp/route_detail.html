@@ -69,10 +69,10 @@
                 <div class="pros_price">
                     <p class="price"><strong id="price">¥2699.00</strong><span>起</span></p>
                     <p class="collect">
-                        <a class="btn"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>
+                        <a class="btn" id="favorite"><i class="glyphicon glyphicon-heart-empty"></i><span id="favo_text">点击收藏</span></a>
 
-                        <a  class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>
-                        <span>已收藏100次</span>
+<!--                        <a  class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>-->
+                        <span id="favoriteCount">已收藏100次</span>
                     </p>
                 </div>        
             </div>
@@ -114,6 +114,8 @@
     <script>
     $(document).ready(function() {
         fillIninfo(); //不知为何应该在fillIninfo里调用play，而不能在外面调用(可能是在外面调用获取的元素不是更新过的，而是以前的)
+        getfavorite();
+        addFavorite();
     });
 
     function play() {
@@ -162,6 +164,7 @@
             $("#sname").html(data.seller.sname);
             $("#consphone").html(data.seller.consphone);
             $("#address").html(data.seller.address);
+            $("#favoriteCount").html("已收藏"+data.count+"次");
 
             //填图片
 
@@ -187,6 +190,40 @@
 
             $("#dd").html(dd);
             play();
+        });
+    }
+
+    function getfavorite() {
+        var rid = getParameter("rid");
+        $.get("route/isFavorite",{rid:rid},function (data) {
+            if(data)
+            {
+                $("#favorite").addClass("already");
+                $("#favorite").attr("disabled","disabled");
+            }
+        })
+    }
+
+    function addFavorite() {
+        $("#favorite").click(function () {
+            $.get("user/getCurrentUser",{},function (user) {
+                if(user)
+                {
+                    var rid = getParameter("rid");
+                    $.get("route/addFavorite",{rid:rid},function () {
+                        getfavorite();
+                        fillIninfo(); //其实只是为了更新收藏次数
+                    });
+
+                }
+                else
+                {
+                    //no user login
+                    alert("您未登陆，请先去登陆");
+                    location.href = "login.html";
+                }
+
+            })
         });
     }
 

@@ -1,15 +1,14 @@
 package cn.itcast.travel.service.impl;
 
+import cn.itcast.travel.dao.FavoriteDao;
 import cn.itcast.travel.dao.RouteDao;
 import cn.itcast.travel.dao.RouteImgDao;
 import cn.itcast.travel.dao.SellerDao;
+import cn.itcast.travel.dao.impl.FavoriteDaoImpl;
 import cn.itcast.travel.dao.impl.RouteDaoImpl;
 import cn.itcast.travel.dao.impl.RouteImgDaoImpl;
 import cn.itcast.travel.dao.impl.SellerDaoImpl;
-import cn.itcast.travel.domain.PageBean;
-import cn.itcast.travel.domain.Route;
-import cn.itcast.travel.domain.RouteImg;
-import cn.itcast.travel.domain.Seller;
+import cn.itcast.travel.domain.*;
 import cn.itcast.travel.service.RouteService;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -20,6 +19,7 @@ public class RouteServiceImpl implements RouteService {
     private RouteDao routeDao = new RouteDaoImpl();
     private SellerDao sellerDao = new SellerDaoImpl();
     private RouteImgDao routeImgDao = new RouteImgDaoImpl();
+    private FavoriteDao favoriteDao = new FavoriteDaoImpl();
 
     /**
      * Give three params and return PageBean
@@ -58,6 +58,12 @@ public class RouteServiceImpl implements RouteService {
         //find img info info in RouteImgDao
         List<RouteImg> listRouteImg = routeImgDao.findRouteImgByRid(rid);
         route.setRouteImgList(listRouteImg);
+
+        //获取收藏次数
+        int favoriteCount = favoriteDao.findFavoriteCountByRid(rid);
+        route.setCount(favoriteCount);
+
         return route;
     }
+
 }

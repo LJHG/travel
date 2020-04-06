@@ -9,4 +9,5 @@ public interface RouteService {
 
     PageBean<Route> routePageQuery(int cid,int pageSize,int currentPage,String rname);
     Route findOne(int rid);
+
 }
