@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RouteService {
 
-    PageBean<Route> routePageQuery(int cid,int pageSize,int currentPage);
+    PageBean<Route> routePageQuery(int cid,int pageSize,int currentPage,String rname);
 }

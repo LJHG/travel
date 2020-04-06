@@ -48,4 +48,15 @@ public class PageBean<T> {
     public void setList(List<T> list) {
         this.list = list;
     }
+
+    @Override
+    public String toString() {
+        return "PageBean{" +
+                "totalCount=" + totalCount +
+                ", currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
+                ", totalPages=" + totalPages +
+                ", list=" + list +
+                '}';
+    }
 }

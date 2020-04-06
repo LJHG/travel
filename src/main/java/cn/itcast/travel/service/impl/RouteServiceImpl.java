@@ -21,11 +21,11 @@ public class RouteServiceImpl implements RouteService {
      * @return
      */
     @Override
-    public PageBean<Route> routePageQuery(int cid, int pageSize, int currentPage) {
+    public PageBean<Route> routePageQuery(int cid, int pageSize, int currentPage,String rname) {
         //find all counts in dao
-        int totalCount = routeDao.findAllCount(cid);
+        int totalCount = routeDao.findAllCount(cid,rname);
         //find all infos in dao
-        List<Route> list= routeDao.findCurrentRouteList(currentPage,pageSize,cid);
+        List<Route> list= routeDao.findCurrentRouteList(currentPage,pageSize,cid,rname);
 
         //set properties
         PageBean<Route> pb = new PageBean<Route>();

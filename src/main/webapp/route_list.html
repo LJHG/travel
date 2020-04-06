@@ -9,31 +9,32 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" href="css/search.css">
     <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/getParameter.js"></script>
     <script>
-        function load(cid,currentPage)
+        function load(cid,currentPage,rname)
         {
-            $.get("route/queryPage?cid="+cid+"&currentPage="+currentPage+"",{},function (data) {
+            //这里用{}传参比较好，如果直接用把参数写在字符串里，可能会把null转化成字符串(但是下面分页还是会传null字符串过去，只好在dao里把null去掉了)
+            $.get("route/queryPage",{cid:cid,currentPage:currentPage,rname:rname},function (data) {
                 //填总页数和总记录
                 $("#totalPage").html(data.totalPages);
                 $("#totalCount").html(data.totalCount);
 
                 var totalPage =  data.totalPages;
-
                 var currentPage = data.currentPage;
 
 
                 //填翻页
                 var lis = "";
 
-                lis += '<li><a href="javascript:load('+cid+','+1+');">首页</a></li>';
+                lis += '<li><a href="javascript:load('+cid+','+1+',\''+rname+'\');">首页</a></li>';
 
                 if(currentPage -1 <= 0)
                 {
-                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+1+');">上一页</a></li>';
+                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+1+',\''+rname+'\');">上一页</a></li>';
                 }
                 else
                 {
-                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+(currentPage-1)+');">上一页</a></li>';
+                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+(currentPage-1)+',\''+rname+'\');">上一页</a></li>';
                 }
 
                 //设置一个begin和end，前5后4
@@ -42,7 +43,7 @@
                 if(totalPage <= 10)
                 {
                     begin=1;
-                    end=10;
+                    end=totalPage;
                 }
                 else
                 {
@@ -65,25 +66,25 @@
                 {
                     if(currentPage == i)
                     {
-                        lis += '<li class="curPage" ><a href="javascript:load('+cid+','+i+');">'+i+'</a></li>';
+                        lis += '<li class="curPage" ><a href="javascript:load('+cid+','+i+',\''+rname+'\');">'+i+'</a></li>';
                     }
                     else
                     {
-                        lis += '<li><a href="javascript:load('+cid+','+i+');">'+i+'</a></li>';
+                        lis += '<li><a href="javascript:load('+cid+','+i+',\''+rname+'\');">'+i+'</a></li>';
                     }
 
                 }
 
                 if(currentPage+1 > totalPage)
                 {
-                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+totalPage+');">下一页</a></li>';
+                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+totalPage+',\''+rname+'\');">下一页</a></li>';
                 }
                 else
                 {
-                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+(currentPage+1)+');">下一页</a></li>';
+                    lis += '<li class="threeword"><a href="javascript:load('+cid+','+(currentPage+1)+',\''+rname+'\');">下一页</a></li>';
                 }
 
-                lis += '<li class="threeword"><a href="javascript:load('+cid+','+totalPage+');">末页</a></li>';
+                lis += '<li class="threeword"><a href="javascript:load('+cid+','+totalPage+',\''+rname+'\');">末页</a></li>';
 
                 $("#jumpList").html(lis);
 
@@ -116,8 +117,9 @@
         }
 
         $(function () {
-            var cid = location.search.split("=")[1];
-            load(cid,1);
+            var cid = getParameter("cid");
+            var rname = getParameter("rname");
+            load(cid,1,rname);
 
         });
     </script>

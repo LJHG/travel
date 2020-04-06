@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.MalformedParametersException;
 
 @WebServlet("/route/*")
 public class RouteServlet extends BaseServlet {
@@ -20,11 +21,13 @@ public class RouteServlet extends BaseServlet {
         String currentPageStr = req.getParameter("currentPage");
         String pageSizeStr = req.getParameter("pageSize");
         String cidStr = req.getParameter("cid");
+        String rname =  req.getParameter("rname");
 
+        rname = new String(rname.getBytes("iso-8859-1"),"utf-8");
         //turn String into int
         int currentPage=1;
         int pageSize = 5;
-        int cid = 1;
+        int cid = 0;
 
         if(currentPageStr != null && currentPageStr.length() >0)
         {
@@ -39,7 +42,7 @@ public class RouteServlet extends BaseServlet {
             cid = Integer.parseInt(cidStr);
         }
 
-        PageBean<Route> pb = routeService.routePageQuery(cid,pageSize,currentPage);
+        PageBean<Route> pb = routeService.routePageQuery(cid,pageSize,currentPage,rname);
 
         //write in json
         resp.setContentType("application/json;charset=utf-8");
