@@ -1,9 +1,15 @@
 package cn.itcast.travel.service.impl;
 
 import cn.itcast.travel.dao.RouteDao;
+import cn.itcast.travel.dao.RouteImgDao;
+import cn.itcast.travel.dao.SellerDao;
 import cn.itcast.travel.dao.impl.RouteDaoImpl;
+import cn.itcast.travel.dao.impl.RouteImgDaoImpl;
+import cn.itcast.travel.dao.impl.SellerDaoImpl;
 import cn.itcast.travel.domain.PageBean;
 import cn.itcast.travel.domain.Route;
+import cn.itcast.travel.domain.RouteImg;
+import cn.itcast.travel.domain.Seller;
 import cn.itcast.travel.service.RouteService;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -12,6 +18,8 @@ import java.util.List;
 public class RouteServiceImpl implements RouteService {
 
     private RouteDao routeDao = new RouteDaoImpl();
+    private SellerDao sellerDao = new SellerDaoImpl();
+    private RouteImgDao routeImgDao = new RouteImgDaoImpl();
 
     /**
      * Give three params and return PageBean
@@ -36,5 +44,20 @@ public class RouteServiceImpl implements RouteService {
         pb.setTotalPages((totalCount%pageSize==0)?(totalCount/pageSize):((totalCount/pageSize) +1));
 
         return pb;
+    }
+
+    @Override
+    public Route findOne(int rid) {
+        //find the basic info in RouteDao
+        Route route = routeDao.findOneByRid(rid);
+
+        //find the seller info in SellerDao
+        Seller seller = sellerDao.findSellerBySid(route.getSid());
+        route.setSeller(seller);
+
+        //find img info info in RouteImgDao
+        List<RouteImg> listRouteImg = routeImgDao.findRouteImgByRid(rid);
+        route.setRouteImgList(listRouteImg);
+        return route;
     }
 }

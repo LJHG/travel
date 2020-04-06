@@ -49,4 +49,13 @@ public class RouteServlet extends BaseServlet {
         String json = writeInJson(pb);
         resp.getWriter().write(json);
     }
+
+    public void findOne(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int rid = Integer.parseInt(req.getParameter("rid"));
+        Route route = routeService.findOne(rid);
+
+        String json = writeInJson(route);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().write(json);
+    }
 }

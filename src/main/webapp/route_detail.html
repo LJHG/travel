@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/route-detail.css">
+    <script src="js/getParameter.js"></script>
 </head>
 
 <body>
@@ -18,14 +19,14 @@
             <a href="/">首页</a>
             <span> &gt;</span>
             <a href="#">国内游</a><span> &gt;</span>
-            <a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+            <a href="#" id="rname">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
         </div>
         <div class="prosum_box">
             <dl class="prosum_left">
                 <dt>
                     <img alt="" class="big_img" src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
                 </dt>
-                <dd>
+                <dd id="dd">
                     <a class="up_img up_img_disable"></a>
                     <a title="" class="little_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">
                         <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m20920d0669855e745d97f9ad1df966ebb.jpg">
@@ -58,15 +59,15 @@
                 </dd>
             </dl>
             <div class="prosum_right">
-               <p class="pros_title">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
-                <p class="hot">1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
+               <p class="pros_title" id="rname2">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
+                <p class="hot" id="routeIntroduce">1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
                 <div class="pros_other">
-                    <p>经营商家  ：黑马国旅</p>
-                    <p>咨询电话 : 400-618-9090</p>
-                    <p>地址 ： 传智播客黑马程序员</p>  
+                    <p>经营商家  ：<span id="sname">黑马国旅</span></p>
+                    <p>咨询电话 : <span id="consphone">400-618-9090</span>></p>
+                    <p>地址 ： <span id="address">传智播客黑马程序员</span></p>
                 </div>
                 <div class="pros_price">
-                    <p class="price"><strong>¥2699.00</strong><span>起</span></p>
+                    <p class="price"><strong id="price">¥2699.00</strong><span>起</span></p>
                     <p class="collect">
                         <a class="btn"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>
 
@@ -112,6 +113,10 @@
     <script type="text/javascript" src="js/include.js"></script>
     <script>
     $(document).ready(function() {
+        fillIninfo(); //不知为何应该在fillIninfo里调用play，而不能在外面调用(可能是在外面调用获取的元素不是更新过的，而是以前的)
+    });
+
+    function play() {
         //焦点图效果
         //点击图片切换图片
         $('.little_img').on('mousemove', function() {
@@ -120,7 +125,7 @@
             $('.big_img').attr('src', big_pic);
             $(this).addClass('cur_img');
         });
-           //上下切换
+        //上下切换
         var picindex = 0;
         var nextindex = 4;
         $('.down_img').on('click',function(){
@@ -143,7 +148,47 @@
         });
         //自动播放
         // var timer = setInterval("auto_play()", 5000);
-    });
+
+    }
+
+    function fillIninfo() {
+
+        var rid = getParameter("rid");
+        $.get("route/findOne",{rid:rid},function (data) {
+            $("#rname").html(data.rname);
+            $("#rname2").html(data.rname);
+            $("#routeIntroduce").html(data.routeIntroduce);
+            $("#price").html("￥"+data.price);
+            $("#sname").html(data.seller.sname);
+            $("#consphone").html(data.seller.consphone);
+            $("#address").html(data.seller.address);
+
+            //填图片
+
+            var dd= '<a class="up_img up_img_disable"></a>';
+            for(var i=0 ;i<data.routeImgList.length;i++)
+            {
+                if(i<4)
+                {
+                    dd += ' <a title="" class="little_img" data-bigpic="'+data.routeImgList[i].bigPic+'">\n' +
+                        '                        <img src="'+data.routeImgList[i].smallPic+'">\n' +
+                        '                    </a>';
+                }
+                else
+                {
+                    dd += ' <a title="" class="little_img" data-bigpic="'+data.routeImgList[i].bigPic+'" style="display:none;">\n' +
+                        '                        <img src="'+data.routeImgList[i].smallPic+'">\n' +
+                        '                    </a>';
+                }
+
+            }
+
+            dd += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
+
+            $("#dd").html(dd);
+            play();
+        });
+    }
 
     //自动轮播方法
     function auto_play() {
