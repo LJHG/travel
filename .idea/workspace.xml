@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f6cd8d4-f6b0-4c7b-b01c-ed2db5f4ac79" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/dao/FavoriteDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/dao/impl/FavoriteDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/FavoriteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/impl/FavoriteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/travel_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/travel_war.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/travel_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/travel_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/dao/RouteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/dao/RouteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/dao/impl/RouteDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/dao/impl/RouteDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/RouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/RouteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/impl/RouteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/service/impl/RouteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/web/servlet/RouteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/itcast/travel/web/servlet/RouteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/route_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/route_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/druid.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/druid.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +129,9 @@
       <workItem from="1585717728529" duration="21578000" />
       <workItem from="1585897897738" duration="10482000" />
       <workItem from="1585981830436" duration="8367000" />
-      <workItem from="1586145172309" duration="24096000" />
+      <workItem from="1586145172309" duration="24242000" />
+      <workItem from="1586404559011" duration="72000" />
+      <workItem from="1586489121476" duration="719000" />
     </task>
     <task id="LOCAL-00001" summary="又把pom改回来了">
       <created>1585823009327</created>
@@ -174,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586170799492</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完成了详情页面的收藏功能，还有一些其它的功能没写，像什么我的收藏什么的，但是课程就讲到这，暂时先不写了">
+      <created>1586178790611</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586178790611</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +233,8 @@
     <MESSAGE value="实现了路线信息的展示以及翻页" />
     <MESSAGE value="实现了路线查询(传参数时，可选择传递的参数为null很坑，可能传着传着就变字符串了)" />
     <MESSAGE value="实现了路线详细页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现了路线详细页面" />
+    <MESSAGE value="完成了详情页面的收藏功能，还有一些其它的功能没写，像什么我的收藏什么的，但是课程就讲到这，暂时先不写了" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了详情页面的收藏功能，还有一些其它的功能没写，像什么我的收藏什么的，但是课程就讲到这，暂时先不写了" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Auto_Import" timestamp="1585909066755">
@@ -251,30 +253,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1585904969997" />
-    <state x="326" y="0" key="CommitChangelistDialog2" timestamp="1586170796091">
+    <state x="326" y="0" key="CommitChangelistDialog2" timestamp="1586178787499">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="326" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586170796091" />
+    <state x="326" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586178787499" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1585822792049">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1585822792049" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1586178106358">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1586489969513">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586178106358" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1586178106358">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586489969513" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1586489969512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586178106358" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1586178106357">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586489969512" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1586489969511">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586178106357" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1586178106358">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586489969511" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1586489969512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586178106358" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586489969512" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1585910356390">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -299,14 +301,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585630065324" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1586170817707">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1586178805667">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586170817707" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586178805667" />
     <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585822533130">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="562" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1585822533130" />
+    <state x="178" y="0" key="new project wizard" timestamp="1586404632726">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="0" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1586404632726" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586177083934">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
