@@ -26,9 +26,20 @@ public class CharacterFilter implements Filter {
             request.setCharacterEncoding("utf-8");
         }
 
-        //处理响应乱码
-        response.setContentType("text/html;charset=utf-8");
+        String uri = request.getRequestURI();
+        response.setCharacterEncoding("utf-8");
+        if(uri.contains(".css") || uri.contains(".js") || uri.contains(".png"))
+        {
+            //response.setContentType("text/css;charset=utf-8");
+        }
+        else
+        {
+            //处理响应乱码
+            response.setContentType("text/html;charset=utf-8");
+        }
+
         filterChain.doFilter(request,response);
+
 
     }
 
